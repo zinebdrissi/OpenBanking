@@ -1,0 +1,45 @@
+server:  
+      port:8090
+      
+spring:
+    application:
+       name: ACCOUNT-SERVICE
+    thymeleaf:
+      prefix: 
+        classpath: /templates/
+      suffix : .html
+      enabled: true
+#database
+
+    datasource:
+          url: jdbc:mysql://localhost:3306/OpenBanking?serverTimezone=UTC
+          username: root
+          password:
+    data:
+         jpa:
+            repositories:
+              bootstrap-mode: default
+            show-sql: true
+            hibernate:
+              ddl-auto: update
+    h2:
+        console:
+            enabled: true
+            
+            
+keycloak:
+  enabled: true
+  realm: app
+  auth-server-url: http://localhost:8180/auth
+  resource: springboot-keycloak
+  public-client: true
+  cors: true
+  #bearer-only: true
+  credentials:
+     secret : 9xGgwRkKro6Qp71dy04mPaX2rkos9wZj 
+  ssl-required: external
+  use-resource-role-mappings : true
+  #securityConstraints[0].authRoles[0] : admin
+  #securityConstraints[0].securityCollections[0].patterns[0] : /accounts/*
+  #principal-attribute: preferred_username
+       
